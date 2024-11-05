@@ -1,0 +1,129 @@
+.settingsContainer {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 400px;
+    max-width: 90%;
+    min-height: 600px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Responsive grid */
+    justify-content: center;
+    gap: 12px;
+    overflow: auto; /* Adjusted from scroll to auto for better UX */
+}
+
+.settingsContainer::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+.settingsContainer::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); /* Color of the scrollbar thumb */
+    border-radius: 4px; /* Rounded corners on the scrollbar thumb */
+}
+
+.settingsContainer::-webkit-scrollbar-track {
+    background-color: #f9f9f9; /* Color of the scrollbar track */
+}
+
+.settingsCard {
+    background-color: #fff;
+    color: #807e7e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    min-width: 200px;
+    min-height: 200px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.settingsCard i {
+    font-size: 35px; /* Adjust icon size */
+    color: #5957b1; /* Icon color */
+}
+
+
+.settingsCard:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+    transform: translateY(-3px);
+    color: #333;
+}
+    
+
+.profileSection, .preferencesSection, .paymentSection, .systemPreferences, .supportSection {
+    margin-bottom: 20px;
+}
+
+.profileSection h2, 
+.preferencesSection h2, 
+.paymentSection h2, 
+.systemPreferences h2, 
+.supportSection h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.profileInput, 
+.passwordInput, 
+.locationInput, 
+.rangeInput, 
+.propertyTypeSelect {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.fileInput {
+    padding: 5px;
+}
+
+.rangeInput {
+    width: calc(100% - 10px);
+}
+
+.propertyTypeSelect {
+    height: 40px;
+}
+
+.profilePic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 10px;
+    display: block;
+}
+
+.themeButton, 
+.supportButton {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.themeButton:hover, 
+.supportButton:hover {
+    background-color: #ddd;
+}
+
+.themeButton:focus, 
+.supportButton:focus {
+    outline: none;
+}

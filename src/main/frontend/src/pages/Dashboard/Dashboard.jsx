@@ -1,11 +1,14 @@
-import { useEffect, useState, useRef } from 'react';
+// src/pages/dashboard/Dashboard.jsx
+import React, { useEffect, useState, useRef } from 'react';
 import styles from './Dashboard.module.css';
 import UserService from "../../services/UserService";
 import Sidebar from "../../components/sidebar/Sidebar";
 import userService from "../../services/UserService";
 import MapPolygon from "../../components/UserMap/MapPolygon.jsx";
+import Settings from "../Settings/Settings.jsx";
 
 const userId = localStorage.getItem("userId");
+const userImage = '/src/assets/img.png';
 
 const Dashboard = () => {
     const [user, setUser] = useState({});
@@ -14,7 +17,6 @@ const Dashboard = () => {
     const sidebarRef = useRef(null);
     const [consultants, setConsultants] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [farmArea, setFarmArea] = useState(null);
 
     useEffect(() => {
         const fetchConsultants = async () => {
@@ -60,11 +62,6 @@ const Dashboard = () => {
         };
     }, [userId, isSidebarOpen]);
 
-    const handleAreaCalculated = (area) => {
-        setFarmArea(area);  // Save the area in state or send it to your backend as needed
-        console.log("Farm area in square meters:", area);
-    };
-
     return (
         <div className={styles.dashboardContainer}>
             <Sidebar
@@ -74,35 +71,38 @@ const Dashboard = () => {
                 setCurrentSection={setCurrentSection}
             />
 
-            <main className={styles.mainContent}>
+            <main className={`${styles.mainContent} ${isSidebarOpen ? styles.sidebarOpen : ''}`}>
                 {currentSection === "profile" && (
                     <section className={styles.profileSection}>
                         <h2>User Profile</h2>
-                        <div className={styles.profileCard}>
-                            <p><strong>Name:</strong> {user.firstName} {user.lastName}</p>
-                            <p><strong>Email:</strong> {user.email}</p>
-                            <p><strong>Phone:</strong> {user.phone}</p>
-                            <p><strong>Address:</strong> {user.address}, {user.city}</p>
-                            <p><strong>Member since:</strong> {new Date(user.joinedDate).toLocaleDateString()}</p>
+                        <div className={styles.profileDetails}>
+                            <div className={styles.userImageContainer}>
+                                <img src={userImage} alt="User profile" className={styles.userImage}/>
+                            </div>
+                            <div className={styles.profileCard}>
+                                <p><strong>Name:</strong> {user.firstName} {user.lastName}</p>
+                                <p><strong>Email:</strong> {user.email}</p>
+                                <p><strong>Phone:</strong> {user.phone}</p>
+                                <p><strong>Address:</strong> {user.address}, {user.city}</p>
+                                <p><strong>Member since:</strong> {new Date(user.joinedDate).toLocaleDateString()}</p>
+                            </div>
+
                         </div>
                     </section>
                 )}
 
                 {currentSection === "myFarm" && (
                     <section className={styles.myFarmSection}>
-                        <h2>My Farm</h2>
-                        <MapPolygon onAreaCalculated={handleAreaCalculated} />
-                        {farmArea && (
-                            <p>Farm Surface Area: {farmArea.toFixed(2)} square meters</p>
-                        )}
+                    <h2>Mark the boundaries of the Farm</h2>
+                        <MapPolygon/>
                     </section>
                 )}
 
-                {currentSection === "payments" && (
-                    <section className={styles.paymentsSection}>
-                        <h2>Payments</h2>
-                        <div className={styles.paymentsContent}>
-                            {/* Payments content goes here */}
+                {currentSection === "settings" && (
+                    <section className={styles.settingsSection}>
+                        <h2>Settings</h2>
+                        <div className={styles.settingsContent}>
+                            <Settings />
                         </div>
                     </section>
                 )}

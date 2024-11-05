@@ -1,54 +1,54 @@
 import React from 'react';
 import styles from './HomePage.module.css';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-
     const navigate = useNavigate();
 
     return (
         <div className={styles.container}>
             {/* Hero Section */}
             <section className={styles.hero}>
-                <h1>Welcome to GreenCup</h1>
-                <p>Your trusted partner in sustainable tea farming solutions.</p>
-                <button onClick={() =>(navigate("/login"))} className={styles.ctaButton}>Get Started</button>
-            </section>
-
-            {/* About Section */}
-            <section className={styles.about}>
-                <h2>About Us</h2>
-                <p>
-                    GreenCup provides expert consultancy to help tea farmers maximize yield,
-                    reduce costs, and implement sustainable practices. With years of experience,
-                    we’re committed to improving the tea farming industry.
+                <h1 className={styles.tagline}>Empowering Sustainable Tea Farming</h1>
+                <p className={styles.subtitle}>
+                    Accurate data solutions for better productivity and resource management.
                 </p>
+                <button
+                    onClick={() => navigate("/login")}
+                    className={styles.ctaButton}
+                >
+                    Sign in
+                </button>
             </section>
 
-            {/* Services Section */}
-            <section className={styles.services}>
-                <h2>Our Services</h2>
-                <div className={styles.serviceList}>
-                    <div className={styles.serviceItem}>
-                        <h3>Soil Analysis</h3>
-                        <p>Detailed soil assessments to improve yield quality.</p>
-                    </div>
-                    <div className={styles.serviceItem}>
-                        <h3>Pest Management</h3>
-                        <p>Eco-friendly pest control strategies.</p>
-                    </div>
-                    <div className={styles.serviceItem}>
-                        <h3>Sustainable Practices</h3>
-                        <p>Guidance on implementing sustainable farming techniques.</p>
-                    </div>
-                </div>
+            {/* About Us Section */}
+            <section className={styles.section} id="about">
+                <h2>About Us</h2>
+                <p>Greencup is committed to providing accurate and sustainable solutions for tea farmers and processors.</p>
+            </section>
+
+            {/* Features Section */}
+            <section className={styles.section} id="features">
+                <h2>Features</h2>
+                <ul>
+                    <li>Farm area calculation using Google Maps API</li>
+                    <li>Yield estimation based on accurate data</li>
+                    <li>Real-time productivity monitoring</li>
+                </ul>
             </section>
 
             {/* Contact Section */}
-            <section className={styles.contact}>
+            <section className={styles.section} id="contact">
                 <h2>Contact Us</h2>
-                <p>Ready to take your tea farming to the next level? Reach out to GreenCup today!</p>
-                <button className={styles.contactButton}>Contact Us</button>
+                <p>Email: contact@greencup.com</p>
+                <p>Phone: +123 456 7890</p>
+
+                {/* Social Media Links */}
+                <div className={styles.socialLinks}>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
             </section>
         </div>
     );

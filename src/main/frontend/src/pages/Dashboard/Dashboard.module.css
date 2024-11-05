@@ -1,83 +1,107 @@
 .dashboardContainer {
     display: flex;
+    flex-direction: row; /* Ensure side by side layout */
+
 }
 
 .mainContent {
-    margin-left: 150px;
+    margin-left: 10px; /* Width of the sidebar */
     padding: 2rem;
     flex: 1;
     transition: margin-left 0.3s ease;
 }
 
+.sidebarOpen {
+    margin-left: 150px; /* Adjust for open sidebar */
+}
+
 .profileSection,
 .myFarmSection,
-.paymentsSection,
+.settingsSection,
 .consultantsSection {
     margin-bottom: 2rem;
-    padding: 1.5rem;
-    background-color: #fff; /* Slightly off-white for modern look */
-    border-radius: 8px; /* More rounded corners for a softer look */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Deeper shadow for more depth */
+    background-color: #ffffff;
+    border-radius: 8px;
+    height: 80vh;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .profileSection h2,
 .myFarmSection h2,
-.paymentsSection h2,
+.settingsSection h2,
 .consultantsSection h2 {
     margin-bottom: 1rem;
-    color: #333; /* Darker text for better readability */
-    font-size: 1.5rem; /* Increased font size for section titles */
+    color: #a1a8a1;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.profileDetails{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 20px;
+}
+
+.userImage {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 3px solid #4CAF50;
 }
 
 .consultantsContent {
-    display: grid; /* Use grid layout for consultant cards */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
-    gap: 1.5rem; /* Space between cards */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
 }
 
 .consultantCard {
-    background-color: #f9f9f9; /* Light background for cards */
+    background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     padding: 1.2rem;
-    text-align: center; /* Center-align text */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover effect */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .consultantCard:hover {
-    transform: translateY(-3px); /* Slight lift on hover */
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+    transform: translateY(-3px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .consultantImage {
-    border-radius: 50%; /* Circular image */
-    width: 100px; /* Image size */
-    height: 100px; /* Image size */
-    margin-bottom: 1rem; /* Space below image */
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
 }
 
 .farmContent,
-.paymentsContent {
-    color: #555; /* Text color */
+.settingsContent {
+    color: #555;
     font-size: 1rem;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .mainContent {
-        margin-left: 20px;
+        margin-left: 0; /* No margin for mobile */
+        padding: 1rem; /* Less padding for smaller screens */
     }
 
     .sidebar {
-        width: 100%;
-        height: auto;
         position: fixed;
-        top: 0;
-        left: 0;
         z-index: 1000;
+        left: -250px; /* Hidden by default */
+        transition: left 0.3s ease; /* Smooth transition */
     }
 
     .sidebar.open {
-        left: 0;
+        left: 0; /* Slide in on open */
+    }
+
+    .profileCard, .consultantCard {
+        padding: 1rem; /* Padding adjustment for smaller screens */
     }
 }

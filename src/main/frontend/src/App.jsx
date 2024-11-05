@@ -5,6 +5,7 @@ import HomePage from "./pages/homepage/HomePage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Login from "./components/login/Login";
 import Header from "./components/header/Header";
+import styles from "./App.module.css";
 
 export const LoginContext = createContext();
 
@@ -28,17 +29,19 @@ function App({ loggedIn }) {
         <LoginContext.Provider value={[isLoggedIn, setIsLoggedIn]}>
             <BrowserRouter>
                 <Header onLogout={handleLogout} />
-                <Routes>
-                    {loggedIn ? (
-                        <Route path="/dashboard" element={<Dashboard user={user} />} />
-                    ) : (
-                        <>
-                            <Route path="/" element={<HomePage />} />
-                            <Route path="/login" element={<Login onLoginSuccess={handleLoginSuccess} />} />
-                            <Route path="*" element={<Navigate to="/" />} />
-                        </>
-                    )}
-                </Routes>
+                <div className={styles.mainContent}>
+                    <Routes>
+                        {loggedIn ? (
+                            <Route path="/dashboard" element={<Dashboard user={user} />} />
+                        ) : (
+                            <>
+                                <Route path="/" element={<HomePage />} />
+                                <Route path="/login" element={<Login onLoginSuccess={handleLoginSuccess} />} />
+                                <Route path="*" element={<Navigate to="/" />} />
+                            </>
+                        )}
+                    </Routes>
+                </div>
             </BrowserRouter>
         </LoginContext.Provider>
     );

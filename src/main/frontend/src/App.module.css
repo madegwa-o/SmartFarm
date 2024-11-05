@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.mainContent {
+    padding-top: 4rem; /* Space for the fixed header */
+    overflow-y: auto; /* Enable scrolling within the content area */
+    height: 100vh ;/* Adjust height to account for header */
+}
