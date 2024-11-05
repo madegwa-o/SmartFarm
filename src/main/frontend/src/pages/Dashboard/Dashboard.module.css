@@ -1,0 +1,83 @@
+.dashboardContainer {
+    display: flex;
+}
+
+.mainContent {
+    margin-left: 150px;
+    padding: 2rem;
+    flex: 1;
+    transition: margin-left 0.3s ease;
+}
+
+.profileSection,
+.myFarmSection,
+.paymentsSection,
+.consultantsSection {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #fff; /* Slightly off-white for modern look */
+    border-radius: 8px; /* More rounded corners for a softer look */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Deeper shadow for more depth */
+}
+
+.profileSection h2,
+.myFarmSection h2,
+.paymentsSection h2,
+.consultantsSection h2 {
+    margin-bottom: 1rem;
+    color: #333; /* Darker text for better readability */
+    font-size: 1.5rem; /* Increased font size for section titles */
+}
+
+.consultantsContent {
+    display: grid; /* Use grid layout for consultant cards */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 1.5rem; /* Space between cards */
+}
+
+.consultantCard {
+    background-color: #f9f9f9; /* Light background for cards */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.2rem;
+    text-align: center; /* Center-align text */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover effect */
+}
+
+.consultantCard:hover {
+    transform: translateY(-3px); /* Slight lift on hover */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+.consultantImage {
+    border-radius: 50%; /* Circular image */
+    width: 100px; /* Image size */
+    height: 100px; /* Image size */
+    margin-bottom: 1rem; /* Space below image */
+}
+
+.farmContent,
+.paymentsContent {
+    color: #555; /* Text color */
+    font-size: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .mainContent {
+        margin-left: 20px;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+}
