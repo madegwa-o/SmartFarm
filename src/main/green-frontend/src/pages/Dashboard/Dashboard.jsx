@@ -6,9 +6,10 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import userService from "../../services/UserService";
 import MapPolygon from "../../components/UserMap/MapPolygon.jsx";
 import Settings from "../Settings/Settings.jsx";
+import userImage from '../../images/img.png';
 
 const userId = localStorage.getItem("userId");
-const userImage = '/src/assets/img.png';
+
 
 const Dashboard = () => {
     const [user, setUser] = useState({});

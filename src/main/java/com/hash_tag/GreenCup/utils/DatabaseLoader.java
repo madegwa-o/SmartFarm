@@ -25,25 +25,25 @@ public class DatabaseLoader {
 
             // Define eight users (four existing + five new consultants)
             List<User> users = Arrays.asList(
-                    new User(null, "johndoe", "password1", "John", "Doe", "johndoe@example.com", "123456789",
-                            "123 Tea Street", "Nairobi", dateFormat.parse("1990-05-15"), new Date(), "Male", "USER"),
-                    new User(null, "janedoe", "password2", "Jane", "Doe", "janedoe@example.com", "987654321",
-                            "456 Tea Avenue", "Mombasa", dateFormat.parse("1992-08-22"), new Date(), "Female", "USER"),
-                    new User(null, "admin", "adminpass", "Admin", "User", "admin@example.com", "555555555",
-                            "789 Admin Road", "Nakuru", dateFormat.parse("1985-12-01"), new Date(), "Male", "ADMIN"),
-                    new User(null, "consultant", "consultpass", "Consult", "Smith", "consult@example.com", "111222333",
-                            "101 Consultant St", "Kericho", dateFormat.parse("1988-02-20"), new Date(), "Female", "CONSULTANT"),
+                    new User(null, "brianmbithi", "securepass1", "Brian", "Mbithi", "brian.mbithi@example.com", "0712345678",
+                            "14 Kenyatta Avenue", "Nairobi", dateFormat.parse("1990-06-15"), new Date(), "Male", "USER"),
+                    new User(null, "susanwambui", "securepass2", "Susan", "Wambui", "susan.wambui@example.com", "0798765432",
+                            "22 Moi Avenue", "Mombasa", dateFormat.parse("1992-11-05"), new Date(), "Female", "USER"),
+                    new User(null, "adminkenya", "adminsecure", "Kenya", "Admin", "admin.kenya@example.com", "0700555555",
+                            "98 KICC Tower", "Nairobi", dateFormat.parse("1983-03-14"), new Date(), "Male", "ADMIN"),
+                    new User(null, "consultantodhiambo", "consult2023", "George", "Odhiambo", "george.odhiambo@example.com", "0711222333",
+                            "101 Tea Road", "Kisumu", dateFormat.parse("1987-09-17"), new Date(), "Male", "CONSULTANT"),
                     // New consultants
-                    new User(null, "consultant1", "pass1", "Alice", "Johnson", "alice.johnson@example.com", "222333444",
-                            "201 Consultant Ave", "Nairobi", dateFormat.parse("1985-01-15"), new Date(), "Female", "CONSULTANT"),
-                    new User(null, "consultant2", "pass2", "Bob", "Smith", "bob.smith@example.com", "333444555",
-                            "202 Consultant Blvd", "Nakuru", dateFormat.parse("1987-02-25"), new Date(), "Male", "CONSULTANT"),
-                    new User(null, "consultant3", "pass3", "Charlie", "Brown", "charlie.brown@example.com", "444555666",
-                            "203 Consultant Rd", "Mombasa", dateFormat.parse("1990-03-30"), new Date(), "Male", "CONSULTANT"),
-                    new User(null, "consultant4", "pass4", "Diana", "Prince", "diana.prince@example.com", "555666777",
-                            "204 Consultant St", "Kericho", dateFormat.parse("1992-04-10"), new Date(), "Female", "CONSULTANT"),
-                    new User(null, "consultant5", "pass5", "Ethan", "Hunt", "ethan.hunt@example.com", "666777888",
-                            "205 Consultant Way", "Nairobi", dateFormat.parse("1995-05-20"), new Date(), "Male", "CONSULTANT")
+                    new User(null, "consultantnancy", "nancysecure", "Nancy", "Kamau", "nancy.kamau@example.com", "0711223344",
+                            "45 Riverside Drive", "Nairobi", dateFormat.parse("1985-12-20"), new Date(), "Female", "CONSULTANT"),
+                    new User(null, "consultantsalim", "salimconsult", "Salim", "Mwangi", "salim.mwangi@example.com", "0722334455",
+                            "76 Nkrumah Road", "Mombasa", dateFormat.parse("1987-10-10"), new Date(), "Male", "CONSULTANT"),
+                    new User(null, "consultanteva", "evapass123", "Eva", "Mutiso", "eva.mutiso@example.com", "0733445566",
+                            "39 Kericho Street", "Kericho", dateFormat.parse("1990-01-25"), new Date(), "Female", "CONSULTANT"),
+                    new User(null, "consultantjoseph", "josephconsult", "Joseph", "Kiprotich", "joseph.kiprotich@example.com", "0744556677",
+                            "65 Eldoret Highway", "Eldoret", dateFormat.parse("1992-08-08"), new Date(), "Male", "CONSULTANT"),
+                    new User(null, "consultantsamina", "saminapass", "Amina", "Ahmed", "amina.ahmed@example.com", "0755667788",
+                            "32 Ngong Lane", "Nairobi", dateFormat.parse("1995-02-28"), new Date(), "Female", "CONSULTANT")
             );
 
             // Save users to the database

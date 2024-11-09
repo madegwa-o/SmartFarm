@@ -2,9 +2,9 @@
 import { useContext } from 'react';
 import styles from './Header.module.css';
 import { Link } from 'react-router-dom';
-import { LoginContext } from "../../App.jsx";
+import { LoginContext } from "../../App";
 
-const cupImage = '/src/assets/cup.png';
+import cupImage from '../../images/cup.png';
 
 const Header = ({ onLogout }) => {
     const [isLoggedIn] = useContext(LoginContext);

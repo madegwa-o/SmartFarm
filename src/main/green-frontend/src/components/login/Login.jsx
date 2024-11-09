@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
 
+const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
 const Login = ({ onLoginSuccess }) => {
     const [username, setUsername] = useState('');
     const [error, setError] = useState(null);
@@ -18,7 +20,7 @@ const Login = ({ onLoginSuccess }) => {
         setError(null);
 
         try {
-            const response = await axios.post('http://localhost:8080/api/login', { username });
+            const response = await axios.post(`${BASE_URL}/api/login`, { username });
             if (response.status === 200) {
                 localStorage.setItem('userId', response.data.userId);
                 localStorage.setItem('username', response.data.username);

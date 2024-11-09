@@ -31,7 +31,7 @@ const HomePage = () => {
             <section className={styles.section} id="features">
                 <h2>Features</h2>
                 <ul>
-                    <li>Farm area calculation using Google Maps API</li>
+                    <li>Farm area calculation </li>
                     <li>Yield estimation based on accurate data</li>
                     <li>Real-time productivity monitoring</li>
                 </ul>

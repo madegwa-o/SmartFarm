@@ -7,15 +7,25 @@ const center = {
     lng: 37.143484,
 };
 
-const MapPolygon = ( ) => {
+const mapOptions = {
+    mapTypeControl: true,
+    streetViewControl: true,
+    fullscreenControl: true,
+    zoomControl: true,
+    mapTypeId: "hybrid",  // Default to hybrid view with satellite and labels
+    styles: null,          // Ensures default labels and POIs are shown
+};
+
+const MapPolygon = () => {
     const [polygonCoords, setPolygonCoords] = useState([]);
     const [markers, setMarkers] = useState([]);
     const [area, setArea] = useState(0);
+    const [mapType, setMapType] = useState("satellite");  // State for map type
 
     // New state for spacing and productivity inputs
-    const [rowSpacing, setRowSpacing] = useState(105); // default in cm
-    const [plantSpacing, setPlantSpacing] = useState(75); // default in cm
-    const [yieldPerTree, setYieldPerTree] = useState(1.55); // default in kg
+    const [rowSpacing, setRowSpacing] = useState(105);
+    const [plantSpacing, setPlantSpacing] = useState(75);
+    const [yieldPerTree, setYieldPerTree] = useState(1.55);
     const [productivity, setProductivity] = useState(0);
     const [totalTrees, setTotalTrees] = useState(0);
 
@@ -35,14 +45,13 @@ const MapPolygon = ( ) => {
         }
     }, [polygonCoords]);
 
-    // Calculate productivity when area, row spacing, plant spacing, or yield per tree changes
     useEffect(() => {
         if (area > 0) {
-            const rowSpacingMeters = rowSpacing / 100; // convert cm to meters
-            const plantSpacingMeters = plantSpacing / 100; // convert cm to meters
+            const rowSpacingMeters = rowSpacing / 100;
+            const plantSpacingMeters = plantSpacing / 100;
             const treesPerRow = Math.floor(area / (rowSpacingMeters * plantSpacingMeters));
             const estimatedProductivity = treesPerRow * yieldPerTree;
-            setTotalTrees(treesPerRow )
+            setTotalTrees(treesPerRow);
             setProductivity(estimatedProductivity);
         }
     }, [area, rowSpacing, plantSpacing, yieldPerTree]);
@@ -52,18 +61,23 @@ const MapPolygon = ( ) => {
         setMarkers([]);
         setArea(0);
         setProductivity(0);
-        setTotalTrees(0)
-        onAreaCalculated(0);
+        setTotalTrees(0);
+    };
+
+    const toggleMapType = () => {
+        setMapType((prevType) => (prevType === "roadmap" ? "satellite" : "roadmap"));
     };
 
     return (
         <div className={styles.container}>
-            <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_API_KEY} libraries={["geometry"]}>
+            <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY} libraries={["geometry"]}>
                 <GoogleMap
                     mapContainerClassName={styles.mapContainer}
                     center={center}
                     zoom={18}
+                    mapTypeId={mapType}  // Set map type here
                     onClick={onMapClick}
+                    options={mapOptions}
                 >
                     {polygonCoords.length > 0 && (
                         <Polygon
@@ -79,20 +93,22 @@ const MapPolygon = ( ) => {
                     )}
 
                     {markers.map((marker, index) => (
-                        <Marker key={index} position={marker}/>
+                        <Marker key={index} position={marker} />
                     ))}
                 </GoogleMap>
             </LoadScript>
             <div className={styles.farmDetails}>
+                <button onClick={toggleMapType} className={styles.button}>
+                    Toggle Satellite View
+                </button>
                 <button onClick={clearPolygon} className={styles.button}>
                     Clear Polygon
                 </button>
-
                 <p className={styles.areaDisplay}>
                     Area: {area > 0 ? `${area.toFixed(2)} square meters` : "Draw a polygon to calculate area"}
                 </p>
 
-                {/* New input fields for productivity calculation */}
+                {/* Input fields for productivity calculation */}
                 <div className={styles.inputs}>
                     <label>
                         Row Spacing (cm):
@@ -121,16 +137,12 @@ const MapPolygon = ( ) => {
                 </div>
 
                 <div className={styles.productivityDisplay}>
-                    <p> Total Tea Trees: {totalTrees}</p>
-                    <p>
-                        Estimated Productivity: {productivity.toFixed(2)} kg
-                    </p>
+                    <p>Total Tea Trees: {totalTrees}</p>
+                    <p>Estimated Productivity: {productivity.toFixed(2)} kg</p>
+                </div>
             </div>
-
         </div>
-</div>
-)
-    ;
+    );
 };
 
 export default MapPolygon;

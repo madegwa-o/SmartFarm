@@ -10,7 +10,7 @@
 }
 
 .container {
-    background-image: url("/src/assets/background.jpeg");
+    background-image: url("/src/images/background.jpeg");
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
